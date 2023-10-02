@@ -22,7 +22,7 @@ class SelectedOption extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text("English"),
+          Text(selectedTitle),
           Icon(Icons.check_circle_outline_rounded),
         ],
       ),

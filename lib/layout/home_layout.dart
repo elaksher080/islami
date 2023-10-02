@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:islami/core/theme/application_theme.dart';
 import 'package:islami/moduls/hadeth/hadeth_view.dart';
-import 'package:islami/moduls/qruan/qruan_view.dart';
+import 'package:islami/moduls/quran/quran_view.dart';
 import 'package:islami/moduls/radio/radio_view.dart';
 import 'package:islami/moduls/settings/settings_view.dart';
 import 'package:islami/moduls/tasbeh/tasbeh_view.dart';
@@ -24,19 +25,21 @@ class _HomeLayoutState extends State<HomeLayout> {
     RadioView(),
     TasbehView(),
     HadethView(),
-    QruanView(),
+    QuranView(),
   ];
 
   @override
   Widget build(BuildContext context) {
 
     return Container(
-            decoration:const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("assets/images/background_homelayout.png"),
-               fit: BoxFit.cover,
-              ),
-            ) ,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(ApplicationTheme.isDark
+              ? "assets/images/background_home_dark.png"
+              : "assets/images/background_homelayout.png"),
+          fit: BoxFit.cover,
+        ),
+      ),
 
       child: Scaffold(
       backgroundColor: Colors.transparent,

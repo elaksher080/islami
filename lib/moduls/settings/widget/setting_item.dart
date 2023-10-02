@@ -34,14 +34,17 @@ class SettingItem extends StatelessWidget {
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
                 border: Border.all(
-                  color: theme.primaryColor,
+                  color: theme.colorScheme.onSecondary,
                   width: 1.5,
                 )),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(selectedOption),
-                Icon(Icons.arrow_drop_down_circle_outlined),
+                Icon(
+                  Icons.arrow_drop_down_circle_outlined,
+                  color: theme.colorScheme.onSecondary,
+                ),
               ],
             ),
           ),

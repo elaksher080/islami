@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
-class QruanItem extends StatelessWidget {
+class QuranItem extends StatelessWidget {
   final String suraName;
   final String suraNumber;
 
-  const QruanItem({super.key, required this.suraName,required this.suraNumber});
+  const QuranItem(
+      {super.key, required this.suraName, required this.suraNumber});
 
   @override
   Widget build(BuildContext context) {
@@ -15,26 +16,22 @@ class QruanItem extends StatelessWidget {
           child: Text(
             suraNumber,
             textAlign: TextAlign.center,
-            style: theme.textTheme.bodyLarge,
+            style: theme.textTheme.bodyMedium,
           ),
         ),
-        //////////////////////////////////
         Container(
-          width: 3.0,
-          height: 50,
-          color: theme.primaryColor,
+          width: 1.5,
+          height: 45,
+          color: theme.colorScheme.onSecondary,
         ),
-        ////////////////////////////////////
         Expanded(
           child: Text(
             suraName,
             textAlign: TextAlign.center,
-            style: theme.textTheme.bodyLarge,
+            style: theme.textTheme.bodyMedium,
           ),
         ),
-        //////////////////////////
       ],
     );
   }
-
 }

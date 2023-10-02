@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:islami/core/theme/application_theme.dart';
 import 'package:islami/layout/home_layout.dart';
 
 class Splashscreen extends StatelessWidget {
@@ -21,9 +22,12 @@ class Splashscreen extends StatelessWidget {
 
     var mediaQuery = MediaQuery.of(context).size;
     return Scaffold(
-      body: Image.asset("assets/images/splash.png",
+      body: Image.asset(
+        ApplicationTheme.isDark
+            ? "assets/images/background_dark.png"
+            : "assets/images/splash.png",
         width: mediaQuery.width,
-      height: mediaQuery.height,
+        height: mediaQuery.height,
         fit: BoxFit.cover,
       ),
     );

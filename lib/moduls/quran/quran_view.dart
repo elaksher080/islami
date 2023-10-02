@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:islami/moduls/qruan/qruan_details.dart';
-import 'package:islami/moduls/qruan/wdiget/qruan_item.dart';
+import 'package:islami/moduls/quran/quran_details_view.dart';
+import 'package:islami/moduls/quran/widget/quran_item.dart';
 
+class QuranView extends StatelessWidget {
+  QuranView({super.key});
 
-class QruanView extends StatelessWidget {
-   QruanView({super.key});
-
-  List<String> suraName =[
+  List<String> suraNames = [
     "الفاتحه",
     "البقرة",
     "آل عمران",
@@ -122,78 +121,71 @@ class QruanView extends StatelessWidget {
     "الفلق",
     "الناس"
   ];
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
-     return Column(
-       children: [
-       Image.asset("assets/icons/qruan_header.png"),
-
-         Divider(
-           color: theme.primaryColor,
-            thickness: 3.0,
-           indent: 5,
-           endIndent: 5,
-           height: 0,
-         ),
-
-         Row(
-           children: [
-             Expanded(
-               child: Text(
-                 "رقم السوره" ,
-                 textAlign: TextAlign.center,
-                 style: theme.textTheme.bodyLarge,
-               ),
-             ),
-         //////////////////////////////////
-             Container(
-               width: 3.0,
-               height: 50,
-               color: theme.primaryColor,
-             ),
-
-         ////////////////////////////////////
-             Expanded(
-               child: Text(
-                 "اسم السوره",
-                 textAlign: TextAlign.center,
-                 style: theme.textTheme.bodyLarge,
-               ),
-             ),
-/////////////////////////////////////////
-
-
-           ],
-         ),
-         
-         Divider(
-           color: theme.primaryColor,
-           thickness: 3.0,
-           indent: 5,
-           endIndent: 5,
-           height: 0,
-         ),
-          Expanded(
-            child: ListView.builder(itemBuilder: (context, index) => GestureDetector(
-              onTap: (){
-                Navigator.pushNamed(context, QruanDetails.routeName);
-              },
-              child: QruanItem(
-                suraName: suraName[index] ,
-                suraNumber:"${index+1}" ,
+    return Column(
+      children: [
+        Image.asset("assets/icons/qruan_header.png"),
+        Divider(
+          thickness: 2.2,
+          indent: 10,
+          endIndent: 10,
+          height: 5,
+        ),
+        Row(
+          children: [
+            Expanded(
+              child: Text(
+                "رقم السورة",
+                textAlign: TextAlign.center,
+                style: theme.textTheme.bodyMedium,
               ),
             ),
-            itemCount: 114,
+            Container(
+              width: 1.5,
+              height: 45,
+              color: theme.colorScheme.onSecondary,
             ),
-          ),
-       ],
-
-     );
-
-
-
-
-
+            Expanded(
+              child: Text(
+                "اسم السورة",
+                textAlign: TextAlign.center,
+                style: theme.textTheme.bodyMedium,
+              ),
+            ),
+          ],
+        ),
+        Divider(
+          thickness: 2.2,
+          indent: 10,
+          endIndent: 10,
+          height: 5,
+        ),
+        Expanded(
+          child: ListView.builder(
+              itemBuilder: (context, index) => GestureDetector(
+                    onTap: () {
+                      Navigator.pushNamed(context, QuranDetailsView.routeName,
+                          arguments:
+                              SuraDetails(suraNames[index], "${index + 1}"));
+                    },
+                    child: QuranItem(
+                      suraName: suraNames[index],
+                      suraNumber: "${index + 1}",
+                    ),
+                  ),
+              itemCount: suraNames.length),
+        )
+      ],
+    );
   }
+}
+
+class SuraDetails {
+  final String suraName;
+  final String suraNumber;
+
+  SuraDetails(this.suraName, this.suraNumber);
 }
