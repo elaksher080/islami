@@ -1,0 +1,26 @@
+import 'package:flutter/material.dart';
+import 'package:islami/moduls/settings/widget/selected_option.dart';
+import 'package:islami/moduls/settings/widget/unselected_option.dart';
+
+class ThemeMoodBottom extends StatelessWidget {
+  const ThemeMoodBottom({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    var theme = Theme.of(context);
+    return Container(
+      padding: EdgeInsets.symmetric(horizontal: 25, vertical: 60),
+      decoration: BoxDecoration(
+        color: theme.primaryColor.withOpacity(0.8),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SelectedOption(selectedTitle: "Dark"),
+          SizedBox(height: 30),
+          UnSelectedOption(unSelectedTitle: "Light"),
+        ],
+      ),
+    );
+  }
+}

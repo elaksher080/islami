@@ -1,6 +1,5 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:islami/moduls/hadeth/hadeth_view.dart';
 import 'package:islami/moduls/qruan/qruan_view.dart';
 import 'package:islami/moduls/radio/radio_view.dart';
@@ -43,7 +42,7 @@ class _HomeLayoutState extends State<HomeLayout> {
       backgroundColor: Colors.transparent,
         //////////////////////////////////////////
         appBar: AppBar(
-          title: const Text("إسلامي"),
+          title: Text(AppLocalizations.of(context)!.islami),
         ),
     ////////////////////////////////////////////////
         body: screens[selectedIndex] ,
@@ -56,45 +55,33 @@ class _HomeLayoutState extends State<HomeLayout> {
         });
        },
            currentIndex: selectedIndex,
-      items: const [
-
-        BottomNavigationBarItem(icon:
-        ImageIcon(
-          AssetImage("assets/icons/settings.png"),
-        ),
-
-            label: "الأعدادات"),
-
-        BottomNavigationBarItem(icon:
-        ImageIcon(
-            AssetImage("assets/icons/radio.png"),
-        ),
-
-            label: "الراديو"),
-
-        BottomNavigationBarItem(icon:
-        ImageIcon(
-            AssetImage("assets/icons/sebha.png"),
-        ),
-
-            label: "التسبيح"),
-
-        BottomNavigationBarItem(icon:
-        ImageIcon(
-            AssetImage("assets/icons/moshaf_blue.png"),
-        ),
-
-            label: "الأحاديث"),
-
-        BottomNavigationBarItem(icon:
-        ImageIcon(
-            AssetImage("assets/icons/quran.png"),
-        ),
-
-            label: "القرآن"),
-
-
-    ],
+      items: [
+            BottomNavigationBarItem(
+                icon: ImageIcon(
+                  AssetImage("assets/icons/settings.png"),
+                ),
+                label: AppLocalizations.of(context)!.settings),
+            BottomNavigationBarItem(
+                icon: ImageIcon(
+                  AssetImage("assets/icons/radio.png"),
+                ),
+                label: AppLocalizations.of(context)!.radio),
+            BottomNavigationBarItem(
+                icon: ImageIcon(
+                  AssetImage("assets/icons/sebha.png"),
+                ),
+                label: AppLocalizations.of(context)!.tasbeh),
+            BottomNavigationBarItem(
+                icon: ImageIcon(
+                  AssetImage("assets/icons/moshaf_blue.png"),
+                ),
+                label: AppLocalizations.of(context)!.hadeth),
+            BottomNavigationBarItem(
+                icon: ImageIcon(
+                  AssetImage("assets/icons/quran.png"),
+                ),
+                label: AppLocalizations.of(context)!.qruan),
+          ],
     ),
 ///////////////////////////////////////////////////////
 
