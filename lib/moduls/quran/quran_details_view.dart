@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:islami/core/theme/application_theme.dart';
+import 'package:islami/core/provider/app_provider.dart';
 import 'package:islami/moduls/quran/quran_view.dart';
+import 'package:provider/provider.dart';
 
 class QuranDetailsView extends StatefulWidget {
   static const String routeName = "Quran_Details";
@@ -23,12 +24,11 @@ class _QuranDetailsViewState extends State<QuranDetailsView> {
 
     var mediaQuery = MediaQuery.of(context).size;
     var theme = Theme.of(context);
+    var appProvider = Provider.of<AppProvider>(context);
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(ApplicationTheme.isDark
-              ? "assets/images/background_home_dark.png"
-              : "assets/images/background_homelayout.png"),
+          image: AssetImage(appProvider.backgroundImage()),
           fit: BoxFit.cover,
         ),
       ),
@@ -43,7 +43,7 @@ class _QuranDetailsViewState extends State<QuranDetailsView> {
           height: mediaQuery.height,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25),
-            color: theme.primaryColor.withOpacity(0.6),
+            color: theme.colorScheme.onBackground.withOpacity(0.6),
           ),
           child: Column(
             children: [

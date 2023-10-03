@@ -23,7 +23,10 @@ class SelectedOption extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(selectedTitle),
-          Icon(Icons.check_circle_outline_rounded),
+          Icon(
+            Icons.check_circle_outline_rounded,
+            color: theme.colorScheme.onSecondary,
+          ),
         ],
       ),
     );

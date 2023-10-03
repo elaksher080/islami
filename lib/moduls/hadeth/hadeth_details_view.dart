@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:islami/moduls/hadeth/hadeth_view.dart';
+import 'package:provider/provider.dart';
 
-import '../../core/theme/application_theme.dart';
+import '../../core/provider/app_provider.dart';
 
 class HadethDetailsView extends StatefulWidget {
   static const String routeName = "Hadeth_Details";
@@ -21,12 +22,11 @@ class _HadethDetailsViewState extends State<HadethDetailsView> {
     var args = ModalRoute.of(context)?.settings.arguments as HadethContent;
     var mediaQuery = MediaQuery.of(context).size;
     var theme = Theme.of(context);
+    var appProvider = Provider.of<AppProvider>(context);
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(ApplicationTheme.isDark
-              ? "assets/images/background_home_dark.png"
-              : "assets/images/background_homelayout.png"),
+          image: AssetImage(appProvider.backgroundImage()),
           fit: BoxFit.cover,
         ),
       ),
@@ -41,7 +41,7 @@ class _HadethDetailsViewState extends State<HadethDetailsView> {
           height: mediaQuery.height,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(25),
-            color: theme.primaryColor.withOpacity(0.6),
+            color: theme.colorScheme.onBackground.withOpacity(0.6),
           ),
           child: Column(
             children: [

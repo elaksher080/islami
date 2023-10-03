@@ -6,6 +6,13 @@ class ApplicationTheme{
 
   static ThemeData lightTheme = ThemeData(
     primaryColor: const Color(0xFFB7935F),
+    colorScheme: ColorScheme.fromSeed(
+      primary: const Color(0xFFB7935F),
+      seedColor: const Color(0xFFB7935F),
+      onSecondary: Colors.black,
+      onPrimary: const Color(0xFFB7935F),
+      onBackground: const Color(0xFFF8F8F8),
+    ),
     scaffoldBackgroundColor: Colors.transparent,
     appBarTheme: AppBarTheme(
         iconTheme: const IconThemeData(
@@ -59,7 +66,7 @@ class ApplicationTheme{
         color: Colors.black,
       ),
     ),
-
+    dividerColor: const Color(0xFFB7935F),
   );
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -69,6 +76,8 @@ class ApplicationTheme{
       primary: const Color(0xFF141A2E),
       seedColor: const Color(0xFF141A2E),
       onSecondary: const Color(0xFFFACC1D),
+      onPrimary: const Color(0xFFFACC1D),
+      onBackground: const Color(0xFF141A2E),
     ),
     scaffoldBackgroundColor: Colors.transparent,
     appBarTheme: AppBarTheme(

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:islami/core/theme/application_theme.dart';
+import 'package:islami/core/provider/app_provider.dart';
 import 'package:islami/moduls/hadeth/hadeth_view.dart';
 import 'package:islami/moduls/quran/quran_view.dart';
 import 'package:islami/moduls/radio/radio_view.dart';
+import 'package:islami/moduls/sebha/sebha_view.dart';
 import 'package:islami/moduls/settings/settings_view.dart';
-import 'package:islami/moduls/tasbeh/tasbeh_view.dart';
+import 'package:provider/provider.dart';
 
 class HomeLayout extends StatefulWidget {
 
@@ -23,42 +24,40 @@ class _HomeLayoutState extends State<HomeLayout> {
   List<Widget> screens = [
     SettingsView(),
     RadioView(),
-    TasbehView(),
+    SebhaView(),
     HadethView(),
     QuranView(),
   ];
 
   @override
   Widget build(BuildContext context) {
+    var appProvider = Provider.of<AppProvider>(context);
 
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(ApplicationTheme.isDark
-              ? "assets/images/background_home_dark.png"
-              : "assets/images/background_homelayout.png"),
+          image: AssetImage(appProvider.backgroundImage()),
           fit: BoxFit.cover,
         ),
       ),
-
       child: Scaffold(
-      backgroundColor: Colors.transparent,
+        backgroundColor: Colors.transparent,
         //////////////////////////////////////////
         appBar: AppBar(
           title: Text(AppLocalizations.of(context)!.islami),
         ),
-    ////////////////////////////////////////////////
+        ////////////////////////////////////////////////
         body: screens[selectedIndex] ,
-    //////////////////////////////////////////////////
-    bottomNavigationBar: BottomNavigationBar(
+        //////////////////////////////////////////////////
+        bottomNavigationBar: BottomNavigationBar(
 
-       onTap: (int index){
-        setState(() {
-          selectedIndex =index;
-        });
-       },
-           currentIndex: selectedIndex,
-      items: [
+          onTap: (int index){
+            setState(() {
+              selectedIndex =index;
+            });
+          },
+          currentIndex: selectedIndex,
+          items: [
             BottomNavigationBarItem(
                 icon: ImageIcon(
                   AssetImage("assets/icons/settings.png"),
@@ -85,7 +84,7 @@ class _HomeLayoutState extends State<HomeLayout> {
                 ),
                 label: AppLocalizations.of(context)!.qruan),
           ],
-    ),
+        ),
 ///////////////////////////////////////////////////////
 
       ),
